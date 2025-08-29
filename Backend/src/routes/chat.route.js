@@ -5,5 +5,6 @@ const route = express.Router()
 
 
 route.post('/', userValidator.authValidator, chatController.createChat)
+route.get('/', userValidator.authValidator, chatController.fetchChats)
 
 module.exports = route

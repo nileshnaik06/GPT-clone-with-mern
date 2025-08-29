@@ -21,4 +21,15 @@ async function createChat(req, res) {
     });
 }
 
-module.exports = { createChat }
+async function fetchChats(req, res) {
+    const user = req.user;
+
+    const chats = chatModel.find({ user: user._id })
+
+    res.status(200).json({
+        message: "Chats retrieved successfully",
+        chat: chats
+    });
+}
+
+module.exports = { createChat, fetchChats }
